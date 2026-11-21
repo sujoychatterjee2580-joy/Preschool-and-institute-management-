@@ -5,13 +5,13 @@ import { usePathname } from "next/navigation";
 import { useLanguage } from "@/context/LanguageContext";
 import {
   LayoutDashboard,
+  Users,
   Receipt,
   BotMessageSquare,
   BookHeart,
   QrCode,
   ShieldAlert,
   Settings,
-  Sparkles,
   GraduationCap,
 } from "lucide-react";
 
@@ -21,6 +21,7 @@ export default function Sidebar() {
 
   const navItems = [
     { name: t.navDashboard, href: "/", icon: LayoutDashboard },
+    { name: t.navAdmin, href: "/admin", icon: Users, badge: "Master" },
     { name: t.navFees, href: "/fees", icon: Receipt },
     { name: t.navAdmissions, href: "/admissions", icon: BotMessageSquare, badge: "AI" },
     { name: t.navDiary, href: "/diary", icon: BookHeart },
@@ -83,7 +84,7 @@ export default function Sidebar() {
         })}
       </nav>
 
-      {/* Clean Bottom Support Info */}
+      {/* Bottom Info */}
       <div className="p-4 border-t border-slate-100 text-[11px] text-slate-400 text-center">
         <span>KiddieSync OS v2.0 • India</span>
       </div>
