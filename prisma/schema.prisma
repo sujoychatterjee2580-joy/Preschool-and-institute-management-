@@ -8,36 +8,43 @@ generator client {
 }
 
 model Tenant {
-  id                 String               @id @default(cuid())
-  name               String
-  slug               String               @unique
-  code               String?              @unique
-  address            String?
-  phone              String?
-  email              String?
-  logoUrl            String?
-  currency           String               @default("INR") // INR, BDT, USD
-  plan               String               @default("PRO") // FREE, STARTER, PRO, ENTERPRISE
-  subscriptionStatus String               @default("ACTIVE") // ACTIVE, TRIAL, PAST_DUE, CANCELLED
-  metaWaPhoneId      String?
-  metaWaAccessToken  String?
-  metaWaVerifyToken  String?
-  upiId              String?              // e.g. preschool@upi for direct instant payments
-  razorpayKeyId      String?
-  razorpayKeySecret  String?
-  createdAt          DateTime             @default(now())
-  updatedAt          DateTime             @updatedAt
+  id                   String               @id @default(cuid())
+  name                 String
+  slug                 String               @unique
+  code                 String?              @unique
+  address              String?
+  phone                String?
+  email                String?
+  logoUrl              String?
+  currency             String               @default("INR") // INR, BDT, USD
+  plan                 String               @default("PRO") // FREE, STARTER, PRO, ENTERPRISE
+  subscriptionStatus   String               @default("ACTIVE") // ACTIVE, TRIAL, PAST_DUE, CANCELLED
+  metaWaPhoneId        String?
+  metaWaAccessToken    String?
+  metaWaVerifyToken    String?
+  upiId                String?              // e.g. preschool@upi for direct instant payments
+  bankName             String?              // Bank Account Details for NEFT/IMPS
+  bankAccount          String?
+  bankIfsc             String?
+  portalNotice         String?              // Custom announcement for parent portal
+  portalShowAttendance Boolean              @default(true)
+  portalShowDiary      Boolean              @default(true)
+  receiptNote          String?              // Custom note on printed receipts
+  razorpayKeyId        String?
+  razorpayKeySecret    String?
+  createdAt            DateTime             @default(now())
+  updatedAt            DateTime             @updatedAt
 
-  users              User[]
-  classes            ClassBatch[]
-  students           Student[]
-  parents            Parent[]
-  invoices           FeeInvoice[]
-  attendance         Attendance[]
-  diaries            DailyKidDiary[]
-  inquiries          AdmissionInquiry[]
-  waLogs             WhatsAppMessageLog[]
-  announcements      Announcement[]
+  users                User[]
+  classes              ClassBatch[]
+  students             Student[]
+  parents              Parent[]
+  invoices             FeeInvoice[]
+  attendance           Attendance[]
+  diaries              DailyKidDiary[]
+  inquiries            AdmissionInquiry[]
+  waLogs               WhatsAppMessageLog[]
+  announcements        Announcement[]
 }
 
 model User {
